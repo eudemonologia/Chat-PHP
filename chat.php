@@ -36,7 +36,16 @@ include_once("./views/templates/Header.php");
                     echo $incomingUser->getName()
                     ?>
                 </h2>
-                <p>Activo ahora</p>
+                <p>
+                    <?php
+                    if ($incomingUser->getLastActivity()->getTimestamp() > (time() - 120)) {
+                        echo "Activo ahora";
+                    } else {
+                        // colocar hacer cuantos minutos hace que se conecto
+                        echo "Activo hace " . round((time() - $incomingUser->getLastActivity()->getTimestamp()) / 60) . " minutos";
+                    }
+                    ?>
+                </p>
             </div>
         </figure>
     </header>

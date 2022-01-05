@@ -27,6 +27,11 @@ if ($result) {
     session_start();
     $_SESSION['user'] = $result;
 
+    // Cambiar el last_activity a la hora actual
+    $sql = "UPDATE usuario SET last_activity = '" . date('Y-m-d H:i:s') . "' WHERE id = " . $_SESSION['user']['id'];
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+
     // Redireccionar al usuario a la página principal
     header('Location: ../user.php');
     exit;

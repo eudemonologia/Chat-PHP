@@ -7,13 +7,17 @@ class User
     private $name;
     private $email;
     private $image;
+    private $last_activity;
+    private $last_msg;
 
-    public function create($id, $name, $email, $image)
+    public function create($id, $name, $email, $image, $last_activity, $last_msg)
     {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->image = $image;
+        $this->last_activity = new DateTime($last_activity);
+        $this->last_msg = $last_msg;
     }
 
     public function getId()
@@ -36,6 +40,16 @@ class User
         return $this->image;
     }
 
+    public function getLastActivity()
+    {
+        return $this->last_activity;
+    }
+
+    public function getLastMsg()
+    {
+        return $this->last_msg;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -56,6 +70,16 @@ class User
         $this->image = $image;
     }
 
+    public function setLastActivity($last_activity)
+    {
+        $this->last_activity = $last_activity;
+    }
+
+    public function setLastMsg($last_msg)
+    {
+        $this->last_msg = $last_msg;
+    }
+
     public function get()
     {
         $con = new Conexion();
@@ -71,6 +95,8 @@ class User
         $this->name = $result['name'];
         $this->email = $result['email'];
         $this->image = $result['image'];
+        $this->last_activity = new DateTime($result['last_activity']);
+        $this->last_msg = $result['last_msg'];
 
         return $this;
     }
@@ -90,6 +116,8 @@ class User
         $this->name = $result['name'];
         $this->email = $result['email'];
         $this->image = $result['image'];
+        $this->last_activity = new DateTime($result['last_activity']);
+        $this->last_msg = $result['last_msg'];
 
         return $this;
     }
@@ -99,11 +127,12 @@ class User
         $con = new Conexion();
         $pdo = $con->getPDO();
 
-        $sql = "INSERT INTO usuario (name, email, image) VALUES (:name, :email, :image)";
+        $sql = "INSERT INTO usuario (name, email, image, last_activity) VALUES (:name, :email, :image, :last_activity)";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':name', $this->name);
         $statement->bindParam(':email', $this->email);
         $statement->bindParam(':image', $this->image);
+        $statement->bindParam(':last_activity', $this->last_activity);
         $statement->execute();
 
         return $this;
@@ -114,12 +143,13 @@ class User
         $con = new Conexion();
         $pdo = $con->getPDO();
 
-        $sql = "UPDATE usuario SET name = :name, email = :email, image = :image WHERE id = :id";
+        $sql = "UPDATE usuario SET name = :name, email = :email, image = :image, last_activity = :last_activity WHERE id = :id";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':id', $this->id);
         $statement->bindParam(':name', $this->name);
         $statement->bindParam(':email', $this->email);
         $statement->bindParam(':image', $this->image);
+        $statement->bindParam(':last_activity', $this->last_activity);
         $statement->execute();
 
         return $this;

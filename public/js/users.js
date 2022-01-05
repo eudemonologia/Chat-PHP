@@ -30,10 +30,14 @@ searchBar.addEventListener("keyup", function (e) {
                     <h3>
                       ${user.name}
                     </h3>
-                    <p>Este es un mensaje de prueba</p>
+                    <p>${user.last_msg ? user.last_msg : "No hay mensajes."}</p>
                 </div>
             </figure>
-            <span class="material-icons status">
+            <span class="material-icons status ${
+              // Saber si tuvo actividad los ultimos 5 minutos
+              formatDate(user.last_activity) < 120 ? "online" : "offline"
+            }">
+            }">
                 circle
             </span>
           </a>

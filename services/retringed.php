@@ -10,4 +10,4 @@ if (!isset($_SESSION['user'])) {
 }
 
 $User = new User();
-$User->create($_SESSION['user']['id'], $_SESSION['user']['name'], $_SESSION['user']['email'], $_SESSION['user']['image']);
+$User->create($_SESSION['user']['id'], $_SESSION['user']['name'], $_SESSION['user']['email'], $_SESSION['user']['image'], $_SESSION['user']['last_activity'], $_SESSION['user']['last_msg']);

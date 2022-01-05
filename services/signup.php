@@ -13,20 +13,20 @@ $image = $_FILES['image'];
 
 // Validar los datos
 if (empty($name) || empty($email) || empty($password) || empty($repassword)) {
-    header('Location: ../index.php?error=emptyFields');
+    header('Location: ../register.php?error=emptyFields');
     exit;
 }
 
 // Validar que las contraseñas coincidan
 if ($password != $repassword) {
-    header('Location: ../index.php?error=passwordsDontMatch');
+    header('Location: ../register.php?error=passwordsDontMatch');
     exit;
 }
 
 // Validar si la imagen existe y si es una imagen
 if ($image['size'] > 0) {
     if ($image['type'] != 'image/jpeg' && $image['type'] != 'image/png') {
-        header('Location: ../index.php?error=wrongImageType');
+        header('Location: ../register.php?error=wrongImageType');
         exit;
     }
 }

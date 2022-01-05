@@ -13,4 +13,11 @@ $statement->bindParam(':incoming_id', $_POST['receiver']);
 $statement->bindParam(':text', $_POST['message']);
 $statement->execute();
 
+//actualizar el último mensaje enviado por el usuario
+$sql = "UPDATE usuario SET last_msg = :last_msg WHERE id = :id";
+$statement = $pdo->prepare($sql);
+$statement->bindParam(':last_msg', $_POST['message']);
+$statement->bindParam(':id', $_SESSION['user']['id']);
+$statement->execute();
+
 echo json_encode($_POST['message']);

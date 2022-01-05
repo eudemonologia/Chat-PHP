@@ -70,10 +70,24 @@ include_once("./views/templates/Header.php");
                                 <h3>
                                     <?php echo $Contact->getName() ?>
                                 </h3>
-                                <p>Este es un mensaje de prueba</p>
+                                <p><?php
+                                    if ($Contact->getLastMsg() != "") {
+                                        echo $Contact->getLastMsg();
+                                    } else {
+                                        echo "No hay mensajes.";
+                                    }
+                                    ?></p>
                             </div>
                         </figure>
-                        <span class="material-icons status">
+                        <span class="material-icons status <?php
+                                                            // Si el contacto tuvo actividad los últimos 5 minutos se le pone activo
+                                                            if ($Contact->getLastActivity()->getTimestamp() > (time() - 120)) {
+                                                                echo "active";
+                                                            } else {
+                                                                echo "offline";
+                                                            }
+                                                            ?>
+                        ">
                             circle
                         </span>
                     </a>

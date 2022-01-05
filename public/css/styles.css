@@ -205,6 +205,9 @@
 
 .list .chat .status {
   font-size: 16px;
+}
+
+.list .chat .status {
   color: var(--color-success);
 }
 

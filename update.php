@@ -1,8 +1,9 @@
 <?php
+require "./services/retringed.php";
 include_once("./views/templates/Header.php");
 ?>
 <main class="card">
-    <h1>¡Bienvenido a CODO A CODO!</h1>
+    <h1>Modificiando al usuario #<?php echo $User->getId() ?></h1>
     <hr>
     <?php
     // Mostrar el mensaje de error si es que existe
@@ -18,18 +19,18 @@ include_once("./views/templates/Header.php");
         }
     }
     ?>
-    <form class="form register" method="POST" action="services/signup.php" enctype="multipart/form-data">
+    <form class="form register" method="POST" action="services/updateUser.php" enctype="multipart/form-data">
         <div class="field">
             <label for="name">Nombre:</label>
-            <input type="text" name="name" id="name" placeholder="Tu nombre completo" required>
+            <input type="text" name="name" id="name" placeholder="Tu nombre completo" value="<?php echo $User->getName(); ?>" required>
         </div>
         <div class="field">
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" placeholder="Tu correo electrónico" required>
+            <input type="email" name="email" id="email" placeholder="Tu correo electrónico" value="<?php echo $User->getEmail(); ?>" required>
         </div>
         <div class="field">
             <label for="image">Imagen:</label>
-            <input type="file" name="image" id="image">
+            <input type="file" name="image" id="image" value="<?php echo $User->getImage(); ?>">
         </div>
         <div class="field">
             <label for="password">Contraseña:</label>
@@ -40,12 +41,12 @@ include_once("./views/templates/Header.php");
             <input type="password" name="repassword" id="repassword" placeholder="Repite tu contraseña" required>
         </div>
         <button type="submit">
-            Registrarse
+            Actualizar Perfil
         </button>
     </form>
     <small>
-        <a href="./">
-            ¿Ya tienes cuenta? Inicia Sesión
+        <a href="profile.php">
+            Cancelar y volver
         </a>
     </small>
 </main>
