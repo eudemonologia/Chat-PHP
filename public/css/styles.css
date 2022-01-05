@@ -1,0 +1,332 @@
+.card {
+  box-shadow: 0 0 128px 0 var(--color-shadow-dark),
+    0 32px 64px -48px var(--color-shadow-dark);
+  background-color: white;
+  margin: auto;
+  text-align: center;
+  padding: 32px;
+  border-radius: 32px;
+}
+
+.card h1 {
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  margin-left: 32px;
+  margin-right: 32px;
+  color: var(--color-secondary);
+  font-weight: bold;
+}
+
+.error {
+  background-color: var(--color-danger);
+  color: darkred;
+  padding: 12px 20px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.success {
+  background-color: var(--color-success);
+  color: darkgreen;
+  padding: 12px 20px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form .field {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 100%;
+}
+
+.form input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid var(--color-light);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form button {
+  background-color: var(--color-primary);
+  box-sizing: border-box;
+  color: white;
+  padding: 14px 20px;
+  margin: 24px 0;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+:is(.list, .chat-area) {
+  text-align: left;
+  min-width: 450px;
+}
+
+.list header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+  padding-bottom: 16px;
+}
+
+.list header .buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.list header .buttons .logout {
+  background-color: var(--color-dark);
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+.list header .buttons .refresh {
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+:is(.list, .chat-area) figure {
+  margin: 0;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+:is(.list, .chat-area) figure h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+:is(.list, .chat-area) figure h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+:is(.list, .chat-area) figure p {
+  margin: 0;
+}
+
+:is(.list, .chat-area) figure img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.list .search {
+  position: relative;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list .search input {
+  position: absolute;
+  padding: 12px 16px;
+  border: 1px solid var(--color-light);
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.list .search input.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.list .search button {
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  z-index: 1;
+  padding: 5px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.list .search button span {
+  font-size: 28px;
+}
+
+.list .search button.active {
+  background-color: var(--color-primary);
+}
+
+.list .chats {
+  max-height: 350px;
+  overflow-y: scroll;
+}
+:is(.chat-box, .list .chats)::-webkit-scrollbar {
+  width: 0px;
+}
+.list .chat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-light);
+}
+
+.list .chat p {
+  color: var(--color-dark);
+}
+
+.list .chat:last-child {
+  border-bottom: none;
+}
+
+.list .chat .status {
+  font-size: 16px;
+  color: var(--color-success);
+}
+
+.list .chat .status.offline {
+  color: var(--color-danger);
+}
+
+.chat-area {
+  max-width: 550px;
+}
+
+.chat-area header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+}
+
+.chat-area header a {
+  display: flex;
+  align-items: center;
+}
+.chat-area header a span {
+  font-size: 32px;
+}
+
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: scroll;
+  height: 350px;
+  border-radius: 24px 24px 0 0;
+  background-color: var(--color-bg);
+  padding: 20px 30px;
+  box-shadow: inset 0 32px 32px -32px var(--color-shadow-light),
+    inset 0 -32px 32px -32px var(--color-shadow-light);
+}
+
+.bubble p {
+  margin: 0;
+  padding: 8px 16px;
+  word-wrap: break-word;
+}
+
+.bubble.outgoing {
+  background-color: var(--color-secondary);
+  color: white;
+  margin-left: 100px;
+  border-radius: 16px 16px 0;
+}
+
+.bubble.incoming {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  margin-right: 100px;
+  border-radius: 16px 16px 16px 0;
+}
+
+.typing-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.typing-area input {
+  padding: 20px 20px;
+  border: 1px solid var(--color-light);
+  border-radius: 0 0 16px 16px;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+}
+
+.typing-area button {
+  position: absolute;
+  right: 16px;
+  background-color: transparent;
+  aspect-ratio: 1;
+  padding: 8px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.typing-area button span {
+  font-size: 24px;
+}
+
+.perfil header figure img {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+}
+
+.perfil header a span {
+  font-size: 32px;
+}
+
+.perfil .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.perfil .buttons a button {
+  background-color: var(--color-primary);
+  box-sizing: border-box;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.perfil .buttons a button.delete {
+  background-color: var(--color-danger);
+  color: darkred;
+}
